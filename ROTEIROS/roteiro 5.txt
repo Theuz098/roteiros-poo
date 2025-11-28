@@ -1,0 +1,185 @@
+// 1 - Class Math
+/*
+class Matematica
+{
+    static void Main()
+    {
+        double raiz = Math.Sqrt(25);
+        double potencia = Math.Pow(2, 3);
+        double seno = Math.Sin(Math.PI / 2);
+
+        Console.WriteLine($"Raiz: {raiz}, Potência: {potencia}, Seno: {seno}");
+    }
+}
+*/
+
+using System;
+
+// Exercicio 1
+class Exercicio1
+{
+    static void Main()
+    {
+        Console.WriteLine("Digite um número decimal:");
+        decimal numero = decimal.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Valor padrão: {numero}");
+
+        Console.WriteLine("Valor com arredondamento padrão: " +
+                          Math.Round(numero));
+
+        Console.WriteLine("Valor com arredondamento para baixo: " +
+                          Math.Floor(numero));
+
+        Console.WriteLine("Valor com arredondamento para cima: " +
+                          Math.Ceiling(numero));
+
+        Console.WriteLine("Valor com truncamento: " +
+                          Math.Truncate(numero));
+    }
+}
+
+
+// 2 - Class String e operações
+/*
+class FormatacaoDeStrings
+{
+    static void Main()
+    {
+        string nome = "Maria";
+
+        Console.WriteLine("Usando ToUpper: " + nome.ToUpper());
+        Console.WriteLine("Usando ToLower: " + nome.ToLower());
+        Console.WriteLine("Usando Contains(\"a\"): " + nome.Contains("a"));
+        Console.WriteLine("Usando Substring(0, 4): " + nome.Substring(0, 4));
+        Console.WriteLine("Usando Replace(\"a\", \"o\"): " + nome.Replace("a", "o"));
+
+        string[] letras = nome.Split('r');
+
+        Console.Write("Usando Split('r'): ");
+        foreach (var word in letras)
+        {
+            Console.Write(word + " ");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("Usando Trim('a'): " + nome.Trim('a'));
+        Console.WriteLine("Usando StartsWith(\"M\"): " + nome.StartsWith("M"));
+        Console.WriteLine("Usando EndsWith(\"a\"): " + nome.EndsWith("a"));
+    }
+}
+*/
+
+
+// Exercicio 2
+/*
+class Exercicio2
+{
+    static void Main()
+    {
+        Console.WriteLine("Digite uma frase com vírgulas e espaços:");
+        //string frase = Console.ReadLine();
+        string frase = "         ,Meu,nome,é,Igor,         ";
+
+        string fraseTratada = frase.Trim();
+        Console.WriteLine(fraseTratada);
+
+        string[] palavras = fraseTratada.Split(',');
+
+        foreach (var palavra in palavras)
+        {
+            Console.WriteLine(palavra);
+        }
+
+        Console.WriteLine(fraseTratada.Replace("Igor", "Ian"));
+        Console.WriteLine(fraseTratada.StartsWith(','));
+        Console.WriteLine(fraseTratada.EndsWith(' '));
+    }
+}
+*/
+
+
+// 3 - Formatação
+/*
+class Formatacao
+{
+    static void Main()
+    {
+        double valor = 1234.5678;
+        int numero = 42;
+
+        Console.WriteLine($"Valor formatado: {valor:F2}");
+        Console.WriteLine($"Número com zeros: {numero:D4}");
+
+        string nome = "Maria";
+        int idade = 28;
+        double saldo = 1234.5678;
+        DateTime hoje = DateTime.Now;
+
+        string mensagem = string.Format(
+            "Nome: {0}, Idade: {1}, Saldo: R$ {2:F2}, Data: {3:dd/MM/yyyy}",
+            nome, idade, saldo, hoje);
+
+        Console.WriteLine(mensagem);
+    }
+}
+*/
+
+
+// 4 - Datas e Calendários
+/*
+class DataECalendarios
+{
+    static void Main()
+    {
+        DateTime agora = DateTime.Now;
+        Console.WriteLine("Agora: " + agora);
+
+        DateTime aniversario = new DateTime(2001, 7, 13);
+        TimeSpan idade = agora - aniversario;
+
+        Console.WriteLine($"Dias de vida: {idade.TotalDays:F0}");
+        Console.WriteLine($"Ano: {agora.Year}, Mês: {agora.Month}");
+        Console.WriteLine(agora.ToString("dd/MM/yyyy HH:mm"));
+        Console.WriteLine(DateTime.Today);
+        Console.WriteLine(DateTime.UtcNow);
+    }
+}
+*/
+
+
+// Exercicio 4
+/*
+using System.Globalization;
+
+class Exercicio4
+{
+    static void Main()
+    {
+        Console.WriteLine("Digite seu nome:");
+        string nome = Console.ReadLine();
+
+        Console.WriteLine("Digite a data do compromisso (formato dd/MM/yyyy HH:mm):");
+        string dataTexto = Console.ReadLine();
+
+        DateTime compromisso = DateTime.ParseExact(
+            dataTexto,
+            "dd/MM/yyyy HH:mm",
+            null
+        );
+
+        DateTime hoje = DateTime.Now;
+        TimeSpan faltam = compromisso - hoje;
+
+        Console.WriteLine(
+            string.Format(
+                "Olá {0}!\nSeu compromisso será em {1} dias.\nData marcada: {2} às {3}",
+                nome,
+                faltam.Days,
+                compromisso.ToString("dd/MM/yyyy"),
+                compromisso.ToString("HH:mm")
+            )
+        );
+    }
+}
+*/

@@ -1,0 +1,172 @@
+using System;
+
+class Exercicio1
+{
+    static void Main()
+    {
+        try
+        {
+            Console.Write("Digite o nome: ");
+            string nome = Console.ReadLine();
+
+            Console.Write("Digite o preço: ");
+            double preco = double.Parse(Console.ReadLine());
+
+            string mensagemDeErro = "";
+
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                mensagemDeErro += "Nome não pode ser vazio.\n";
+            }
+
+            if (preco <= 0)
+            {
+                mensagemDeErro += "Preço não pode ser negativo ou zero.\n";
+            }
+
+            if (!string.IsNullOrEmpty(mensagemDeErro))
+            {
+                throw new FormatException(mensagemDeErro);
+            }
+            else
+            {
+                Console.WriteLine($"Nome: {nome}, Preço: {preco}");
+            }
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+        }
+    }
+}
+
+using System;
+
+class Exercicio2
+{
+    public static float ConversorCelsius()
+    {
+        float temperatura = 0;
+
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite um número: ");
+                string? entrada = Console.ReadLine();
+
+                // Como o projeto está com Nullable habilitado, tratamos possível null
+                if (string.IsNullOrWhiteSpace(entrada))
+                {
+                    Console.WriteLine("Entrada vazia. Digite um valor numérico.");
+                    continue;
+                }
+
+                temperatura = float.Parse(entrada);
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Formato incorreto. Digite um número válido (ex: 25,5).");
+                continue;
+            }
+        }
+
+        return temperatura;
+    }
+
+    static void Main()
+    {
+        float temperatura = ConversorCelsius();
+        Console.WriteLine(temperatura + " ºC");
+    }
+}
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+
+class Exercicio3
+{
+    static void Main()
+    {
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite um número: ");
+                string? entrada = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(entrada))
+                {
+                    Console.WriteLine("Entrada vazia. Por favor, digite um número inteiro.");
+                    continue;
+                }
+
+                int numero = int.Parse(entrada);
+                Console.WriteLine($"Número digitado: {numero}");
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Valor inválido. Por favor, digite um número inteiro.");
+                continue;
+            }
+        }
+    }
+}
+
+class IdadeInvalidaException : Exception
+{
+    public IdadeInvalidaException() 
+        : base("Erro: Idade mínima para acesso é 18 anos.") 
+    { }
+}
+
+class Exercicio4
+{
+    static void Main()
+    {
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite a idade: ");
+                string? entrada = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(entrada))
+                {
+                    Console.WriteLine("Formato inválido.");
+                    continue;
+                }
+
+                int idade = int.Parse(entrada);
+
+                if (idade < 18)
+                    throw new IdadeInvalidaException();
+
+                Console.WriteLine("Acesso Permitido.");
+                break;
+            }
+            catch (IdadeInvalidaException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Formato inválido.");
+            }
+        }
+    }
+}
